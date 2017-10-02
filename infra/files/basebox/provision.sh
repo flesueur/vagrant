@@ -32,6 +32,9 @@ useradd -m -s "/bin/bash" -p `mkpasswd --method=sha-512 debian` debian || true
 echo "tmpfs /run tmpfs nosuid,noexec,size=26M 0  0" >> /etc/fstab
 mount -o remount /run
 
+sed -i "s/PasswordAuthentication no/PasswordAuthentication yes/" /etc/ssh/sshd_config
+
+
 # guest utils et reboot
 #/vagrant/files/skeleton/VBoxLinuxAdditions.run
 # reboot

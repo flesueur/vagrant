@@ -24,5 +24,6 @@ tar zxvf /vagrant/files/hacker/thunderbird.tar.gz -C /home/debian/
 chown -R debian:debian /vagrant/files/hacker/homedir
 cp -ar /vagrant/files/hacker/homedir/* /home/debian/
 ln -sf /home/debian/background.jpg /usr/share/images/desktop-base/default
+chown -R debian:debian /home/debian
 
 reboot

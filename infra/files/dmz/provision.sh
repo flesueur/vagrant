@@ -10,7 +10,7 @@
 #DEBIAN_FRONTEND=noninteractive apt-get remove -y lightdm
 systemctl set-default multi-user.target
 
-DEBIAN_FRONTEND=noninteractive apt-get install -y unbound postfix dovecot-imapd proftpd
+DEBIAN_FRONTEND=noninteractive apt-get install -y unbound postfix dovecot-imapd proftpd apt-transport-https
 
 #network config and prevent direct routing to internet
 cp /vagrant/files/dmz/interfaces /etc/network/interfaces.d/dmz
@@ -29,5 +29,14 @@ sed -i -e 's/mynetworks = /mynetworks = 192.168.0.0\/16 /' /etc/postfix/main.cf
 
 useradd -m -s "/bin/bash" -p `mkpasswd --method=sha-512 commercial` commercial || true
 useradd -m -s "/bin/bash" -p `mkpasswd --method=sha-512 @password` insa || true
+
+
+cp /vagrant/files/dmz/ossec.list /etc/apt/sources.list.d/
+wget -q -O /tmp/key https://www.atomicorp.com/RPM-GPG-KEY.art.txt
+apt-key add /tmp/key
+apt-get update
+DEBIAN_FRONTEND=noninteractive apt-get install -y --allow-unauthenticated ossec-hids-server
+
+
 
 reboot

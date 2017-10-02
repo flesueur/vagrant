@@ -8,7 +8,7 @@ cp /vagrant/files/keyboard /etc/default/keyboard
 apt-get update
 DEBIAN_FRONTEND=noninteractive apt-get -y upgrade
 DEBIAN_FRONTEND=noninteractive apt-get -y dist-upgrade
-DEBIAN_FRONTEND=noninteractive apt-get install -y apache2 vim xfce4 lightdm firefox-esr gnome-terminal firmware-atheros firmware-misc-nonfree tcpdump dsniff whois postgresql wireshark dkms net-tools # keyboard-configuration  wireshark
+DEBIAN_FRONTEND=noninteractive apt-get install -y apache2 vim xfce4 lightdm firefox-esr gnome-terminal firmware-atheros firmware-misc-nonfree tcpdump dsniff whois postgresql wireshark dkms net-tools zerofree # keyboard-configuration  wireshark
 apt-get clean
 
 
@@ -33,6 +33,7 @@ mount -o remount /run
 
 #login ssh avec mot de passe
 echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
+sed -i "s/PasswordAuthentication no/PasswordAuthentication yes/" /etc/ssh/sshd_config
 
 # guest utils et reboot
 /vagrant/files/VBoxLinuxAdditions.run

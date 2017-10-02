@@ -21,7 +21,6 @@ def bruteforce(server):
 				file = open('eicar.txt','rb')  
 				ftp.storbinary('STOR eicar.com', file)
 				print ("[++] Fichier depose")
-				stop() 
 			except ftplib.error_perm:
 				print ("[-] Erreur de connexion avec le compte : "+user+" / Mot de passe : "+password)
 

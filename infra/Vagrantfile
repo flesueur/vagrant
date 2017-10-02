@@ -47,7 +47,7 @@ Vagrant.configure("2") do |config|
     hacker.vm.provision "shell", inline: "/vagrant/files/hacker/provision.sh"
     config.vm.provider "virtualbox" do |vb|
       vb.name = "vagrant-infra-hacker"
-      vb.memory = "256"
+      vb.memory = "512"
       vb.customize ["modifyvm", :id, "--vram", "16"]
     end
   end
@@ -58,7 +58,7 @@ Vagrant.configure("2") do |config|
     commercial.vm.provision "shell", inline: "/vagrant/files/commercial/provision.sh"
     config.vm.provider "virtualbox" do |vb|
       vb.name = "vagrant-infra-commercial"
-      vb.memory = "256"
+      vb.memory = "512"
       vb.customize ["modifyvm", :id, "--vram", "16"]
     end
   end
@@ -74,6 +74,7 @@ Vagrant.configure("2") do |config|
     firewall.vm.provision "shell", inline: "/vagrant/files/firewall/provision.sh"
     config.vm.provider "virtualbox" do |vb|
       vb.name = "vagrant-infra-firewall"
+      vb.memory = "256"
     end
   end
 
@@ -95,6 +96,7 @@ Vagrant.configure("2") do |config|
     dmz.vm.provision "shell", inline: "/vagrant/files/dmz/provision.sh"
     config.vm.provider "virtualbox" do |vb|
       vb.name = "vagrant-infra-dmz"
+      vb.memory = "256"
     end
   end
 
@@ -117,8 +119,7 @@ Vagrant.configure("2") do |config|
     #home.vm.provision "shell", inline: "/vagrant/files/hacker/provision.sh"
     config.vm.provider "virtualbox" do |vb|
       vb.name = "vagrant-infra-home"
-      vb.memory = "256"
-      vb.customize ["modifyvm", :id, "--vram", "16"]
+      vb.memory = "128"
     end
   end
 
