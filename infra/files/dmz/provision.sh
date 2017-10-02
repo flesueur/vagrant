@@ -10,7 +10,7 @@
 #DEBIAN_FRONTEND=noninteractive apt-get remove -y lightdm
 systemctl set-default multi-user.target
 
-DEBIAN_FRONTEND=noninteractive apt-get install -y unbound postfix dovecot-imapd
+DEBIAN_FRONTEND=noninteractive apt-get install -y unbound postfix dovecot-imapd proftpd
 
 #network config and prevent direct routing to internet
 cp /vagrant/files/dmz/interfaces /etc/network/interfaces.d/dmz

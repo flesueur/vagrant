@@ -27,6 +27,12 @@ update-locale LANG=fr_FR.UTF-8
 usermod -p `mkpasswd --method=sha-512 root` root
 useradd -m -s "/bin/bash" -p `mkpasswd --method=sha-512 debian` debian || true
 
+# augmentation de la taille de /run si lowmem
+echo "tmpfs /run tmpfs nosuid,noexec,size=26M 0  0" >> /etc/fstab
+mount -o remount /run
+
+#login ssh avec mot de passe
+echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
 
 # guest utils et reboot
 /vagrant/files/VBoxLinuxAdditions.run

