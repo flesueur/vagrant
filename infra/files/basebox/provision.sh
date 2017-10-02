@@ -5,7 +5,7 @@ cp /vagrant/files/skeleton/sources.list /etc/apt/sources.list
 cp /vagrant/files/skeleton/keyboard /etc/default/keyboard
 
 # MAJ et install
-#apt-get update
+apt-get update
 #DEBIAN_FRONTEND=noninteractive apt-get -y upgrade
 #DEBIAN_FRONTEND=noninteractive apt-get -y dist-upgrade
 #DEBIAN_FRONTEND=noninteractive apt-get install -y apache2 vim tcpdump dsniff whois dkms net-tools # keyboard-configuration  wireshark
